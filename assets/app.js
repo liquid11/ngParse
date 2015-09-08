@@ -11,7 +11,31 @@
 var storeApp = angular.module('storeApp', []);
 
 storeApp.controller('StoreController', function () {
+ // this.products = gems;
+ Parse.$ = jQuery;
+
+ Parse.initialize("cRbcnbfn5N0KULEUbTVvm2i1ttKixNILTPmso8Qo", "ZAANEe5AsQbC4KX2VxuT5R2FSJjAtDhBx24iCL75");
+// put the keys
+
+ var GemsObject = Parse.Object.extend("gems");
+ var gems = new GemsObject();
+
+ gems.fetch({
+
+  success: function (gems) {
+
+   this.products.$apply(function () {
     this.products = gems;
+   });
+
+   //console.log(gems);
+  },
+  error: function (blogs, error) {
+   console.log(error);
+  }
+
+ });
+
 });
 
 //storeApp.controller('PanelController',function() {
