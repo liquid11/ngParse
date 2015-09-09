@@ -4,8 +4,8 @@ storeApp.controller('StoreController', function($http) {
  // this.products = gems;
  $http.get('https://api.parse.com/1/classes/gems/', {
   headers: {
-   'X-Parse-Application-Id': '',
-   'X-Parse-REST-API-Key': '',
+   'X-Parse-Application-Id': 'cRbcnbfn5N0KULEUbTVvm2i1ttKixNILTPmso8Qo',
+   'X-Parse-REST-API-Key': 'Vgvi94iOt4gKgWFkFFr8hSVjQcIHIk9Cl0QWoVqp',
   }
  }).success(function(data) {
   this.products = data;
