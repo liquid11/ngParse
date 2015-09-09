@@ -1,39 +1,14 @@
-/**
- * Created by tezrosolutions on 08/09/2015.
- */
-/**
- * Created by tezrosolutions on 08/09/2015.
- */
-/**
- * Created by tezrosolutions on 12/08/2015.
- */
-
 var storeApp = angular.module('storeApp', []);
 
-storeApp.controller('StoreController', function () {
+storeApp.controller('StoreController', function($http) {
  // this.products = gems;
- Parse.$ = jQuery;
-
- Parse.initialize("cRbcnbfn5N0KULEUbTVvm2i1ttKixNILTPmso8Qo", "ZAANEe5AsQbC4KX2VxuT5R2FSJjAtDhBx24iCL75");
-// put the keys
-
- var GemsObject = Parse.Object.extend("gems");
- var gems = new GemsObject();
-
- gems.fetch({
-
-  success: function (gems) {
-
-   this.products.$apply(function () {
-    this.products = gems;
-   });
-
-   //console.log(gems);
-  },
-  error: function (blogs, error) {
-   console.log(error);
+ $http.get('https://api.parse.com/1/classes/gems/', {
+  headers: {
+   'X-Parse-Application-Id': '',
+   'X-Parse-REST-API-Key': '',
   }
-
+ }).success(function(data) {
+  this.products = data;
  });
 
 });
